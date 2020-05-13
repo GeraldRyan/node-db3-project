@@ -3,7 +3,10 @@ const db = require('../db-config')
 module.exports = {
   find,
   findById,
-  findSteps
+  findSteps,
+  add,
+  update,
+  remove
 }
 
 function find() {
@@ -15,10 +18,19 @@ function findById(id) {
 }
 
 function findSteps(id){
-  return db('schemes').join('steps', "schemes.id",'=','steps.scheme_id').where("schemes.id","=", id).orderBy("steps.step_number")
+  return db('schemes').join('steps', "schemes.id",'=','steps.scheme_id').where("schemes.id","=", id).orderBy("steps.step_number").select('schemes.scheme_name', "steps.step_number","steps.instructions")
 
 }
 
+function add(scheme){
+
+}
+function update(changes, id){
+  
+}
+function remove(id){
+  
+}
 
 // -   `findSteps(id)`:
 //     -   Expects a scheme `id`.
